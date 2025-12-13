@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import mediaRoutes from "./routes/mediaRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -19,6 +20,8 @@ app.use(express.json());
 app.use(cors(allowedOrigins));
 
 app.use("/api/v1/auth", authRoutes);
+
+app.use("/api/v1/media", mediaRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
